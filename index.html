@@ -21,52 +21,14 @@ Pushwoosh.push(['init', {
     }										
 }]);
 </script>
+
+<link rel="manifest" href="/manifest.json"></link>
+<script type="text/javascript" src="cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js" async></script>
+
 </head>
 <body bgcolor="white">
 <h1>Test Page</h1>
 
-<link rel="manifest" href="/manifest.json"></link>
-<script type="text/javascript" src="//cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js" async></script>
-
-<script>
-function click(){
-    var akPush = new AKPush()
-    try {
-        console.log("click OK")
-        akPush.initSubscription();
-
-    } catch (e) {
-        console.log("error:",e)
-    }
-}
-function onClick(){
-
-    console.log("click OK")
-    var akPush = new AKPush();
-    akPush.initSubscription();
-}
-</script>
-<script>
-Pushwoosh.push(function(api) {
-  var myCustomTags = {
-    'Tag 1': 123,
-    'Tag 2': 'some string'
-  };
-  api.setTags(myCustomTags)
-    .then(function(res) {
-      var skipped = res && res.skipped || [];
-      if (!skipped.length) {
-        console.log('success');
-      }
-      else {
-        console.warn('skipped tags:', skipped);
-      }
-    })
-    .catch(function(err) {
-      console.error('setTags error:', err);
-    });
-});
-</script>
 <button onclick="Pushwoosh.subscribe()">Subscribe</button>
 <script>
   Pushwoosh.push(['onSubscribe', function(api) {
