@@ -4,5 +4,5 @@
   "gcm_sender_id": "554490756447",
   "display": "standalone",
   "gcm_user_visible_only": true,
-  "fcm_sender_id": true
+  "autoSubscribe": false
 }
