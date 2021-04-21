@@ -28,11 +28,11 @@ Pushwoosh.push(['init', {
 <body bgcolor="white">
 <h1>Test Page</h1>
 
-<button onclick="Pushwoosh.subscribe()">Subscribe</button>
 <script>
   Pushwoosh.push(['onSubscribe', function(api) {
     console.log('User successfully subscribed');
   }]);
 </script>
+<button onclick="Pushwoosh.subscribe()">Subscribe</button>
 </body>
 </html>
