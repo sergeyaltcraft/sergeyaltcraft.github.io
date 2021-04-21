@@ -3,41 +3,31 @@
 <head>
 <meta charset="utf-8">
 <title>qweqwe</title>
+<script type="text/javascript">
+var Pushwoosh = Pushwoosh || [];
+Pushwoosh.push(['init', {
+    logLevel: 'info', // possible values: error, info, debug
+    applicationCode: '738AF-FD1A', // you application code from Pushwoosh Control Panel
+    safariWebsitePushID: 'web.com.example.domain', //  unique reverse-domain string, obtained in you Apple Developer Portal. Only needed if you send push notifications to Safari browser
+    defaultNotificationTitle: 'Pushwoosh', // sets a default title for push notifications
+    defaultNotificationImage: 'https://yoursite.com/img/logo-medium.png', // URL to custom custom notification image
+    autoSubscribe: false, // or true. If true, prompts a user to subscribe for pushes upon SDK initialization
+    subscribeWidget: {
+      enabled: true
+    },
+    userId: 'user_id', // optional, set custom user ID
+    tags: {
+        'Name': 'John Smith'   	// optional, set custom Tags
+    }										
+}]);
+</script>
 </head>
 <body bgcolor="white">
 <h1>Test Page</h1>
-<!--<script src="https://pxl.daria-markina.dev.altkraft.com/ak_container.js?id=MXwz" ></script>-->
-<!--  <link rel="manifest" href="/manifest.json"></link>-->
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<!--<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script> -->
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<!-- The core Firebase JS SDK is always required and must be listed first -->
+<link rel="manifest" href="/manifest.json"></link>
+<script type="text/javascript" src="//cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js" async></script>
 
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyAICFPo45m8tutTHTAlhxqtm8BZzLbpwr8",
-    authDomain: "sergeyaltcraft.firebaseapp.com",
-    databaseURL: "https://sergeyaltcraft-default-rtdb.firebaseio.com",
-    projectId: "sergeyaltcraft",
-    storageBucket: "sergeyaltcraft.appspot.com",
-    messagingSenderId: "554490756447",
-    appId: "1:554490756447:web:d39ac9647b7a62dea08aea",
-    measurementId: "G-64L0EQDKZG"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
 <script>
 function click(){
     var akPush = new AKPush()
@@ -56,6 +46,28 @@ function onClick(){
     akPush.initSubscription();
 }
 </script>
-<p><input type="button" value="Проверить" onclick="onClick()"></p>
+<script>
+Pushwoosh.push(['init', {
+  //...
+  subscribeWidget: {
+    enable: true,
+    position: 'bottomLeft', //possible values: ‘bottomLeft’, ‘bottomRight’, ‘topLeft’, ‘topRight’
+    bgColor: '#12AE7E',
+    bellColor: 'white',
+    bellStrokeColor: '#08754f',
+    bellButtonBorder: '1px solid #379676',
+    shadow: '0px 0px 6px rgba(0, 0, 0, 0.75)',
+    size: '48px',
+    indent: '20px',
+    zIndex: '999999',
+    tooltipText: {
+      successSubscribe: 'You are successfully subscribed!',
+      needSubscribe: 'Get notifications about important news!',
+      blockSubscribe: 'Click to see how to get notifications',
+      alreadySubscribed: 'You are already subscribed'
+    }
+  }
+}]);
+</script>
 </body>
 </html>

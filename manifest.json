@@ -3,5 +3,6 @@
   "short_name": "TEST_SITE",
   "gcm_sender_id": "554490756447",
   "display": "standalone",
-  "gcm_user_visible_only": true
+  "gcm_user_visible_only": true,
+  "fcm_sender_id": true
 }
