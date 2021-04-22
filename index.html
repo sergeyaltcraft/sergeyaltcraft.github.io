@@ -9,6 +9,16 @@
 </head>
 <body bgcolor="white">
 <h1>Test Page</h1>
+<script>
+importScripts('https://www.gstatic.com/firebasejs/3.6.8/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/3.6.8/firebase-messaging.js');
+
+firebase.initializeApp({
+    messagingSenderId: '554490756447'
+});
+
+const messaging = firebase.messaging();
+</script>
 <button type="button" id="subscribe">Следить за изменениями</button>
 </body>
 </html>
