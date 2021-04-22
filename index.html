@@ -1,15 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Title</title>
-<link rel="manifest" href="/manifest.json"></link>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script type="text/javascript" src="//www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
-<script type="text/javascript" src="/firebase_subscribe.js"></script>
-<body bgcolor="white">
-<h1>Test Page</h1>
-<button type="button" id="subscribe">Следить за изменениями</button>
+<body>
+<h2>Firebase Web Push Notification Example</h2>
+
+<p id="token"></p>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyAICFPo45m8tutTHTAlhxqtm8BZzLbpwr8",
+        authDomain: "sergeyaltcraft.firebaseapp.com",
+        databaseURL: "https://sergeyaltcraft-default-rtdb.firebaseio.com",
+        projectId: "sergeyaltcraft",
+        storageBucket: "sergeyaltcraft.appspot.com",
+        messagingSenderId: "554490756447",
+        appId: "1:554490756447:web:d39ac9647b7a62dea08aea",
+        measurementId: "G-64L0EQDKZG"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const messaging=firebase.messaging();
+
+    function IntitalizeFireBaseMessaging() {
+        messaging
+            .requestPermission()
+            .then(function () {
+                console.log("Notification Permission");
+                return messaging.getToken();
+            })
+            .then(function (token) {
+                console.log("Token : "+token);
+                document.getElementById("token").innerHTML=token;
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            });
+    }
+
+    messaging.onMessage(function (payload) {
+        console.log(payload);
+        const notificationOption={
+            body:payload.notification.body,
+            icon:payload.notification.icon
+        };
+
+        if(Notification.permission==="granted"){
+            var notification=new Notification(payload.notification.title,notificationOption);
+
+            notification.onclick=function (ev) {
+                ev.preventDefault();
+                window.open(payload.notification.click_action,'_blank');
+                notification.close();
+            }
+        }
+
+    });
+    messaging.onTokenRefresh(function () {
+        messaging.getToken()
+            .then(function (newtoken) {
+                console.log("New Token : "+ newtoken);
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            })
+    })
+    IntitalizeFireBaseMessaging();
+</script>
 </body>
 </html>
