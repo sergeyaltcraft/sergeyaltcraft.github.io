@@ -1,7 +1,4 @@
 {
-  "name": "Test_site",
-  "short_name": "TEST_SITE",
-  "gcm_sender_id": "554490756447",
-  "display": "standalone",
-  "gcm_user_visible_only": true
+  "name": "https://sergeyaltcraft.github.io/sergey.github.io",
+  "display": "standalone"
 }

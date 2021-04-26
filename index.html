@@ -1,73 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="utf-8">
+<title>qweqwe</title>
 </head>
-<body>
-<h2>Firebase Web Push Notification Example</h2>
+<body bgcolor="white">
+<h1>Test Page</h1>
+<script src="https://pxl.daria-markina.dev.altkraft.com/ak_container.js?id=MXwz" ></script>
+<!--  <link rel="manifest" href="/manifest.json"></link>-->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!--<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script> -->
 
-<p id="token"></p>
-<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
 <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyAICFPo45m8tutTHTAlhxqtm8BZzLbpwr8",
-        authDomain: "sergeyaltcraft.firebaseapp.com",
-        databaseURL: "https://sergeyaltcraft-default-rtdb.firebaseio.com",
-        projectId: "sergeyaltcraft",
-        storageBucket: "sergeyaltcraft.appspot.com",
-        messagingSenderId: "554490756447",
-        appId: "1:554490756447:web:d39ac9647b7a62dea08aea",
-        measurementId: "G-64L0EQDKZG"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const messaging=firebase.messaging();
+function click(){
+    var akPush = new AKPush()
+    try {
+        console.log("click OK")
+        akPush.initSubscription();
 
-    function IntitalizeFireBaseMessaging() {
-        messaging
-            .requestPermission()
-            .then(function () {
-                console.log("Notification Permission");
-                return messaging.getToken();
-            })
-            .then(function (token) {
-                console.log("Token : "+token);
-                document.getElementById("token").innerHTML=token;
-            })
-            .catch(function (reason) {
-                console.log(reason);
-            });
+    } catch (e) {
+        console.log("error:",e)
     }
+}
+function onClick(){
 
-    messaging.onMessage(function (payload) {
-        console.log(payload);
-        const notificationOption={
-            body:payload.notification.body,
-            icon:payload.notification.icon
-        };
+    console.log("click OK")
+    var akPush = new AKPush();
+    akPush.initSubscription();
+}
+</script> 
+<p><input type="button" value="Проверить" onclick="click()"></p>
 
-        if(Notification.permission==="granted"){
-            var notification=new Notification(payload.notification.title,notificationOption);
-
-            notification.onclick=function (ev) {
-                ev.preventDefault();
-                window.open(payload.notification.click_action,'_blank');
-                notification.close();
-            }
-        }
-
-    });
-    messaging.onTokenRefresh(function () {
-        messaging.getToken()
-            .then(function (newtoken) {
-                console.log("New Token : "+ newtoken);
-            })
-            .catch(function (reason) {
-                console.log(reason);
-            })
-    })
-    IntitalizeFireBaseMessaging();
-</script>
 </body>
 </html>
