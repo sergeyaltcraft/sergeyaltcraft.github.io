@@ -1,1 +1,1 @@
-importScripts('https://pxl.daria-markina.dev.altkraft.com/service-worker.js?id=MXwz');
+importScripts('https://pxl.daria-markina.dev.altkraft.com/ak_container.js?id=MXwz');
