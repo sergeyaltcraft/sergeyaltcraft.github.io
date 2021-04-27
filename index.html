@@ -10,6 +10,7 @@
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
+<!--
 <script>
 function click(){
     var akPush = new AKPush()
@@ -27,7 +28,18 @@ function onClick(){
     var akPush = new AKPush();
     akPush.initSubscription();
 }
-</script> 
+</script>-->
+<script>
+    document.getElementById('init_sub').addEventListener('click', function() { // По клику на кнопку..
+        try {
+            var akPush = new AKPush();
+            akPush.initSubscription() // ..показать форму подписки
+        }
+        catch (e) {
+            console.log(e); // Или записать ошибку в консоль браузера
+        }
+    });
+</script>
 <p><input type="button" value="Проверить" onclick="click()"></p>
 
 </body>
