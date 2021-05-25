@@ -43,7 +43,11 @@ function click(){
     var akPush = new AKPush()
     try {
         console.log("click OK")
-        akPush.initSubscription(db:89);
+        akPush.initSubscription(
+          {
+          db:89
+          }
+          );
 
     } catch (e) {
         console.log("error:",e)
