@@ -59,8 +59,13 @@ function onClick(){
     var akPush = new AKPush();
     akPush.initSubscription(
       {
-      db: [27, 7, 5]
-      }
+      db: 5,
+      email: 'example@email.com'
+      },
+      {
+      _fname: 'Anatoly',
+      _lname: 'Wasserman'
+      } 
     );
 }
 </script>
