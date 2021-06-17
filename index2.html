@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Title</title>
+<script defer src="https://pxl.daria-markina.dev.altkraft.com/ak_container.js?id=MXwz" ></script>
+<!--  <link rel="manifest" href="/manifest.json"></link>-->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!--<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script> -->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+
+<script defer src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script defer src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyAICFPo45m8tutTHTAlhxqtm8BZzLbpwr8",
+    authDomain: "sergeyaltcraft.firebaseapp.com",
+    databaseURL: "https://sergeyaltcraft-default-rtdb.firebaseio.com",
+    projectId: "sergeyaltcraft",
+    storageBucket: "sergeyaltcraft.appspot.com",
+    messagingSenderId: "554490756447",
+    appId: "1:554490756447:web:d39ac9647b7a62dea08aea",
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+</head>
+<body>
+    <button id="init_sub">Подписаться на уведомления</button>
+ 
+<script>
+    AKPush.events.on('subscribe', (data) => { // это подписка на событие subscribe
+        console.log(data);
+    });
+    AKPush.events.on('update_subscription', (data) => { // это подписка на событие update_subscription
+        console.log(data);
+    });
+    document.getElementById('init_sub').addEventListener('click', function() { // По клику на кнопку..
+    try {
+        var akPush = new AKPush();
+        akPush.initSubscription() // ..показать форму подписки
+        }
+    catch (e) {
+        console.log(e); // Или записать ошибку в консоль браузера
+        }
+    });
+</script>
+</body>
+</html>
